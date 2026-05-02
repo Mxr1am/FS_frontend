@@ -3,7 +3,7 @@
     <div class="risk-card-header">
       <div>
         <div class="risk-name">{{ label }}</div>
-        <div class="feature-list">{{ result.features_used.join(', ') }}</div>
+    
       </div>
       <div class="risk-badge" :class="`badge-${result.risk_level}`">
         {{ result.risk_level }}
@@ -11,9 +11,7 @@
     </div>
 
     <div class="gauge-container">
-      <div class="gauge-circle" :style="gaugeStyle">
-        <span>{{ Math.round(result.risk_score) }}%</span>
-      </div>
+      
       <div>
         <div class="gauge-number" :style="{ color: riskColor }">
           {{ result.risk_score }}%
