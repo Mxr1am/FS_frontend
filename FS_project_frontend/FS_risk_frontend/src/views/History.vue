@@ -16,6 +16,12 @@
           <div class="history-risk" :class="`text-${item.risk_level}`">
             {{ item.risk_score }}%<br />{{ item.risk_level }}
           </div>
+           <button
+            class="delete-btn"
+            :disabled="deletingId === item.test_id"
+            @click="deleteItem(item.test_id)"
+            title="Delete"
+          >×</button>
         </div>
       </section>
     </main>
@@ -40,6 +46,19 @@ export default {
         this.history = res.data.history
       } catch (err) {
         this.error = err.response?.data?.detail || 'Could not load history.'
+      }
+    },
+     async deleteItem(testId) {
+      if (!confirm('Delete this test?')) return
+      this.error = ''
+      this.deletingId = testId
+      try {
+        await API.delete(`/history/${testId}`)
+        this.history = this.history.filter(h => h.test_id !== testId)
+      } catch (err) {
+        this.error = err.response?.data?.detail || 'Could not delete.'
+      } finally {
+        this.deletingId = null
       }
     },
     formatDate(ms) {

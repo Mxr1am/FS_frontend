@@ -4,7 +4,7 @@
       <div class="logo-icon">FS</div>
       <div>
         <div class="logo-text">RISK PREDICTOR</div>
-        <div class="logo-sub">FORMULA STUDENT · COMPONENT HEALTH</div>
+        <div class="logo-sub">Formula Student · Component Health</div>
       </div>
     </div>
     <nav v-if="loggedIn">
@@ -13,7 +13,6 @@
       <router-link to="/profile">Profile</router-link>
       <button class="link-btn" @click="logout">Logout</button>
     </nav>
-    <div class="header-status"><div class="status-dot"></div><span>{{ status }}</span></div>
   </header>
 </template>
 
@@ -22,7 +21,7 @@ import API from '../services/api'
 
 export default {
   props: {
-    status: { type: String, default: 'MODELS ACTIVE' }
+    status: { type: String, default: '' }
   },
   computed: {
     loggedIn() {

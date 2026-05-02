@@ -36,7 +36,7 @@ export default {
     label() {
       if (this.component === 'engine') return 'ENGINE'
       if (this.component === 'brake') return 'BRAKES'
-      return 'BATTERY'
+      
     },
     riskColor() {
       const pct = Number(this.result.risk_score)
